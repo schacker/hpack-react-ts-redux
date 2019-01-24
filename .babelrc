@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ],
+    "es2015",
+    "react",
+    "babel-preset-stage-3"
+  ],
+  "plugins": [
+    "transform-runtime", 
+    "import", 
+    [{"style": "css", "libraryName": "antd"}]
+  ]
+}
