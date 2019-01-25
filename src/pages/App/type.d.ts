@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Dispatch } from "redux";
 
 export interface IRoute {
   path: string;
@@ -10,4 +11,5 @@ export interface IRoute {
 
 export interface IProps extends React.Props<any> {
   router: IRoute[];
+  dispatch: Dispatch;
 }

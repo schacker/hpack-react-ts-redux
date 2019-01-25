@@ -1,4 +1,3 @@
-export interface IHomePageStoreState {
-  syncId: string;
-  asyncId: string;
+export interface INothing {
+  n: string;
 }

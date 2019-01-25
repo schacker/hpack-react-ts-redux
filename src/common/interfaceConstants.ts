@@ -9,14 +9,14 @@ export interface IModule1Prop {
   payload: any;
 }
 
-interface IModule1StateListItem {
+export interface IModule1StateListItem {
   key: number | string;
   name: string;
   age: number;
   address: string;
   tags: string[];
 }
-interface IModule1StateColumnsItem {
+export interface IModule1StateColumnsItem {
   title: string;
   dataIndex?: string;
   key: string;

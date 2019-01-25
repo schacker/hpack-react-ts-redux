@@ -1,9 +1,12 @@
 import * as React from "react";
 import { Component } from "react";
-import { Table, Tag } from "antd";
+import { connect } from "react-redux";
+import { Table, Tag, Button } from "antd/lib/index";
 import * as TYPE from "../../common/interfaceConstants";
+import { Dispatch, bindActionCreators } from "redux";
+import * as actions from "./action";
 
-export default class extends Component<{}, TYPE.IModule1State> {
+class Module1Component extends Component<any, TYPE.IModule1State> {
 
   constructor(props: any) {
     super(props);
@@ -60,23 +63,55 @@ export default class extends Component<{}, TYPE.IModule1State> {
   /**
    * addList
    */
-  public addList() {
-    const { dataSource } = this.state;
-    dataSource.push({
+  public addListItem() {
+    // const { dataSource } = this.state;
+    this.props._addList({
       key: "3",
       name: "胡彦斌12",
       age: 32,
       address: "西湖区湖底公园12号",
       tags: ["1"],
     });
-    this.setState({dataSource});
+    // dataSource.push({
+    //   key: "3",
+    //   name: "胡彦斌12",
+    //   age: 32,
+    //   address: "西湖区湖底公园12号",
+    //   tags: ["1"],
+    // });
+    // this.setState({dataSource});
+  }
+  /**
+   * removeListItem
+   */
+  public removeListItem() {
+    const { dataSource } = this.state;
+    dataSource.pop();
+    this.setState({ dataSource });
   }
 
   public render() {
-    const { columns, dataSource} = this.state;
+    const { columns, dataSource } = this.state;
     return (
     <div>
       <Table columns={columns} dataSource={dataSource} />
+      <section>
+        <Button onClick={this.addListItem.bind(this)}>add</Button>
+        <Button onClick={this.removeListItem.bind(this)}>remove</Button>
+      </section>
     </div>);
   }
 }
+
+const mapStateToProps = (state: any) => {
+  const { dataSource, columns } = state.Module1;
+  return Object.assign({}, { dataSource, columns });
+};
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return bindActionCreators(actions, dispatch);
+}
+
+const Module1 = connect(mapStateToProps, mapDispatchToProps)(Module1Component);
+
+export default Module1;

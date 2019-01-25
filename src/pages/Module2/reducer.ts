@@ -1,19 +1,21 @@
 import { IAction } from "../../common/interfaceConstants";
 import * as CONST from "../../common/actionTypeConstants";
-import * as TYPES from "../../common/stateTypeConstants";
 
-const initState: TYPES.IHomePageStoreState = {
-  syncId: "默认值",
-  asyncId: "默认值",
+interface IModule2State {
+  n: string;
+}
+
+const initState: IModule2State = {
+  n: "module2",
 };
 
-export default function homeReducers(state = initState, action: IAction): TYPES.IHomePageStoreState {
+export default function homeReducers(state = initState, action: IAction): IModule2State {
   const { type, payload } = action;
   switch (type) {
     case CONST.SYNC_DATA:
-      return { ...state, syncId: payload.data };
+      return { ...state, n: payload.data };
     case CONST.ASYNC_DATA:
-      return { ...state, asyncId: payload.data };
+      return { ...state, n: payload.data };
     default:
       return { ...state };
   }
