@@ -9,7 +9,7 @@ const initState: IModule2State = {
   n: "module2",
 };
 
-export default function homeReducers(state = initState, action: IAction): IModule2State {
+export default function module2Reducers(state = initState, action: IAction): IModule2State {
   const { type, payload } = action;
   switch (type) {
     case CONST.SYNC_DATA:

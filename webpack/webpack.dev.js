@@ -34,7 +34,13 @@ module.exports = {
   rules: {},
 
   // postcss的插件，如果自行定制，本地也需安装一下相应node模块
-  postcssPlugin: {},
+  postcssPlugin: {
+    "plugins": {
+      "postcss-viewport-units": {
+        silence: true
+      }
+    }
+  },
 
   // .eslintrc的配置项，可以覆盖
   eslintConfig: {},
